@@ -1,23 +1,19 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/ElementDict.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Sprites/UI/Button/button_hover.tres" type="StyleBox" id=3]
-[ext_resource path="res://Sprites/UI/Button/button_press.tres" type="StyleBox" id=4]
-[ext_resource path="res://Sprites/UI/Button/button_focus.tres" type="StyleBox" id=5]
-[ext_resource path="res://Sprites/UI/Button/button_disabled.tres" type="StyleBox" id=6]
-[ext_resource path="res://Sprites/UI/Button/button.tres" type="StyleBox" id=7]
-[ext_resource path="res://Sprites/UI/Text/credits_text.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/UI/Text/quit_text.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/UI/logo.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/UI/Text/back_text.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/UI/Text/credits.png" type="Texture" id=12]
-[ext_resource path="res://Scenes/ElementBase.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Sprites/UI/background.png" type="Texture" id=14]
-[ext_resource path="res://Scenes/Tables/CombinationTable.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/Tables/DerivationTable.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scenes/Tables/ThaumaturgyTable.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Scenes/Tables/TransmutingTable.tscn" type="PackedScene" id=18]
+[ext_resource path="res://UI/Themes/Default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://Sprites/UI/Text/credits_text.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/Text/quit_text.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/UI/logo.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/Text/back_text.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/Text/credits.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/ElementBase.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sprites/UI/background.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Tables/CombinationTable.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Tables/DerivationTable.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Tables/ThaumaturgyTable.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Tables/TransmutingTable.tscn" type="PackedScene" id=14]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/play_text.png-c71b7c2e93a6058ccc92063ea6c05167.stex"
@@ -31,6 +27,7 @@ script = ExtResource( 1 )
 current = true
 
 [node name="Main" type="Control" parent="."]
+editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 600.0
 
@@ -40,11 +37,7 @@ margin_left = -200.0
 margin_top = -20.0
 margin_right = 200.0
 margin_bottom = 60.0
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 4 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/disabled = ExtResource( 6 )
-custom_styles/normal = ExtResource( 7 )
+theme = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="Main/PlayButton"]
 margin_left = 40.0
@@ -60,18 +53,14 @@ margin_left = -200.0
 margin_top = 80.0
 margin_right = 200.0
 margin_bottom = 160.0
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 4 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/disabled = ExtResource( 6 )
-custom_styles/normal = ExtResource( 7 )
+theme = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="Main/CreditsButton"]
 margin_left = 40.0
 margin_top = 10.0
 margin_right = 360.0
 margin_bottom = 70.0
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 stretch_mode = 6
 
 [node name="QuitButton" type="Button" parent="Main"]
@@ -80,85 +69,80 @@ margin_left = -200.0
 margin_top = 190.0
 margin_right = 200.0
 margin_bottom = 270.0
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 4 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/disabled = ExtResource( 6 )
-custom_styles/normal = ExtResource( 7 )
+theme = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="Main/QuitButton"]
 margin_left = 40.0
 margin_top = 10.0
 margin_right = 360.0
 margin_bottom = 70.0
-texture = ExtResource( 9 )
+texture = ExtResource( 5 )
 stretch_mode = 6
 
 [node name="logo" type="Sprite" parent="Main"]
 position = Vector2( 0, -160 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 10 )
+texture = ExtResource( 6 )
 
 [node name="Credits" type="Control" parent="."]
+editor/display_folded = true
 visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="BackButton" type="Button" parent="Credits"]
+editor/display_folded = true
 margin_left = -200.0
 margin_top = 190.0
 margin_right = 200.0
 margin_bottom = 270.0
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 4 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/disabled = ExtResource( 6 )
-custom_styles/normal = ExtResource( 7 )
+theme = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="Credits/BackButton"]
 margin_left = 40.0
 margin_top = 10.0
 margin_right = 360.0
 margin_bottom = 70.0
-texture = ExtResource( 11 )
+texture = ExtResource( 7 )
 stretch_mode = 6
 
 [node name="credits" type="Sprite" parent="Credits"]
 scale = Vector2( 3, 3 )
-texture = ExtResource( 12 )
+texture = ExtResource( 8 )
 
 [node name="Background" type="Node2D" parent="."]
+editor/display_folded = true
 
-[node name="ElementBase" parent="Background" instance=ExtResource( 13 )]
+[node name="ElementBase" parent="Background" instance=ExtResource( 9 )]
 position = Vector2( -360, -160 )
 element_id = 1
 
-[node name="ElementBase2" parent="Background" instance=ExtResource( 13 )]
+[node name="ElementBase2" parent="Background" instance=ExtResource( 9 )]
 position = Vector2( -360, 160 )
 
-[node name="ElementBase3" parent="Background" instance=ExtResource( 13 )]
+[node name="ElementBase3" parent="Background" instance=ExtResource( 9 )]
 position = Vector2( 360, -160 )
 element_id = 3
 
-[node name="ElementBase4" parent="Background" instance=ExtResource( 13 )]
+[node name="ElementBase4" parent="Background" instance=ExtResource( 9 )]
 position = Vector2( 360, 160 )
 element_id = 4
 
 [node name="background" type="Sprite" parent="Background"]
 scale = Vector2( 3, 3 )
 z_index = -100
-texture = ExtResource( 14 )
+texture = ExtResource( 10 )
 
-[node name="CombinationTable" parent="Background" instance=ExtResource( 15 )]
+[node name="CombinationTable" parent="Background" instance=ExtResource( 11 )]
 position = Vector2( -512, 0 )
 
-[node name="DerivationTable" parent="Background" instance=ExtResource( 16 )]
+[node name="DerivationTable" parent="Background" instance=ExtResource( 12 )]
 position = Vector2( 512, 0 )
 
-[node name="ThaumaturgyTable" parent="Background" instance=ExtResource( 17 )]
+[node name="ThaumaturgyTable" parent="Background" instance=ExtResource( 13 )]
 position = Vector2( 0, -420 )
 
-[node name="TransmutingTable" parent="Background" instance=ExtResource( 18 )]
+[node name="TransmutingTable" parent="Background" instance=ExtResource( 14 )]
 position = Vector2( 0, 420 )
 [connection signal="pressed" from="Main/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Main/CreditsButton" to="." method="_on_CreditsButton_pressed"]

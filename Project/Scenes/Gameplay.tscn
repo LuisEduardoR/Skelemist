@@ -7,12 +7,13 @@
 [ext_resource path="res://Scenes/Tables/DerivationTable.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Tables/TransmutingTable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Tables/ThaumaturgyTable.tscn" type="PackedScene" id=7]
-[ext_resource path="res://TileSet/default_tileset.tres" type="TileSet" id=8]
+[ext_resource path="res://TileSets/default_tileset.tres" type="TileSet" id=8]
 [ext_resource path="res://Sprites/Other/cobweb_1.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/Other/cobweb_2.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/Other/love.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/UI/Icon/icon_controls.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Other/book.png" type="Texture" id=13]
+
 
 [node name="Node2D" type="Node2D"]
 

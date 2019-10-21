@@ -47,29 +47,34 @@ func combine_4(e1, e2, e3, e4):
 		print_debug("Warning!: Combination was called with at least one null (-1) element!")
 		return -1
 		
+	# Creates an array with the elements.
+	var element_array = []
+	element_array.append(e1)
+	element_array.append(e2)
+	element_array.append(e3)
+	element_array.append(e4)
+		
 	# Goes through the combinations.
 	for combination in element_4_combinations:
 		
-		var correct_e1 = false
-		var correct_e2 = false
-		var correct_e3 = false
-		var correct_e4 = false
+		# Stores how many elements have matched.
+		var matches = 0
 		
+		# Stores what elements have been used.
+		var used_elements = []
 		for i in range(4):
-			if combination[i] == e1:
-				correct_e1 = true
+			used_elements.append(false)
+		
+		# Checks for each element if it matches any element in the combination, also marks the element as used.
 		for i in range(4):
-			if combination[i] == e2:
-				correct_e2 = true
-		for i in range(4):
-			if combination[i] == e3:
-				correct_e3 = true
-		for i in range(4):
-			if combination[i] == e4:
-				correct_e4 = true
+			for j in range(4):
+				if not used_elements[j] and combination[i] == element_array[j]:
+					matches += 1
+					used_elements[j] = true
+					break
 				
 		# Check if the combination exists.
-		if correct_e1 and correct_e2 and correct_e3 and correct_e4:
+		if matches == 4:
 			return combination[4] # If it does, returns the output element.
 	
 	return 0 # If no combination exists returns 0 (salt)

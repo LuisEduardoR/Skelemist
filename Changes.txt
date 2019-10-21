@@ -1,0 +1,3 @@
+- Fixed typo in page 8 of the book.
+- Fixed thaumaturgy table accepting repetitions of the same elements in a combination as a valid combination instead of checking for the exact elements.
+- Moved button styles into a button theme now being used by the game UI.
