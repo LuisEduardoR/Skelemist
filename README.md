@@ -1,11 +1,15 @@
+**This branch is destined to keep the game code on it's original release state after the end of Livre Game Jam 2019.**
+
+---
+
 Originally Made for the Livre Game Jam 2019 by:
 
-* Leadro Satoshi
+* Leandro Satoshi
 * Luís Eduardo Rozante
 
 You could only use open source software for developing your game and the theme was: "Alchemy".
 
-Made using Godot Engine, Krita and Gimp (Also one of the developers was using Linux =D).
+Made using Godot Engine, Krita and GIMP (Also one of the developers was using Linux =D).
 
 Some achievements were also provided, this game tried to get:
 
