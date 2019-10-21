@@ -1,4 +1,4 @@
-**This branch is destined to keep the game code on it's original release state after the end of Livre Game Jam 2019.**
+**This branch is destined to keep the game experience on it's original release state after the end of Livre Game Jam 2019, but fix small mistakes and bugs.**
 
 ---
 
