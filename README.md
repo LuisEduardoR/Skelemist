@@ -1,8 +1,12 @@
-**This branch is destined to keep the game experience on it's original release state after the end of Livre Game Jam 2019, but fix small mistakes and bugs.**
+![](https://raw.githubusercontent.com/LuisEduardoR/Skelemist/master/Project/Sprites/UI/logo.png)
 
 ---
 
-Originally Made for the Livre Game Jam 2019 by:
+**This branch is the main branch of the project, there are other branches dedicated to preserving the original jam version in it's pure and fixed states.**
+
+---
+
+**Originally made for the Livre Game Jam 2019 by:**
 
 * Leandro Satoshi
 * Luís Eduardo Rozante
@@ -17,3 +21,5 @@ Some achievements were also provided, this game tried to get:
 * Living is overrated: make a game where all characters are dead
 * Jack of All Trades: make an item that is used in more than one situation
 * Use a 16 bit color palette.
+
+---
