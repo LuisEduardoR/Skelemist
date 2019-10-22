@@ -1,18 +1,33 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/Tables/DerivationTable.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Tables/table_derivation.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Interactables/Tables/DerivationTable.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/UI/Icon/icon_put.tres" type="Texture" id=2]
+[ext_resource path="res://Sprites/UI/Icon/icon_trash.tres" type="Texture" id=3]
+[ext_resource path="res://Sprites/Tables/table_derivation.tres" type="Texture" id=4]
+[ext_resource path="res://Sprites/Elements/element_salt.tres" type="Texture" id=5]
+
 
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="DerivationTable" type="StaticBody2D" groups=[
+"Interactable",
 "Tables",
 ]]
 script = ExtResource( 1 )
+allow_interaction_e = true
+allow_interaction_t = true
+interaction_icon_e = ExtResource( 2 )
+interaction_icon_t = ExtResource( 3 )
 
 [node name="table_sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
+
+[node name="element_0" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -16 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 4, 4 )

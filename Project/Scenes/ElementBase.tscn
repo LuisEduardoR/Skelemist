@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scripts/ElementBase.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Elements/element_base.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Elements/element_salt.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Interactables/ElementBase.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/UI/Icon/icon_pick.tres" type="Texture" id=2]
+[ext_resource path="res://Sprites/Elements/element_base.tres" type="Texture" id=3]
+[ext_resource path="res://Sprites/Elements/element_salt.tres" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 1.28216
 
 [node name="ElementBase" type="StaticBody2D" groups=[
+"Interactable",
 "Bases",
 ]]
 script = ExtResource( 1 )
+allow_interaction_e = true
+interaction_icon_e = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
@@ -20,9 +24,9 @@ shape = SubResource( 1 )
 [node name="element_base" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )
 z_index = 1
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="element" type="Sprite" parent="element_base"]
 position = Vector2( 0, -8 )
-z_index = 4
-texture = ExtResource( 3 )
+z_index = 12
+texture = ExtResource( 4 )

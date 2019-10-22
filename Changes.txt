@@ -1,3 +1,9 @@
-- Fixed typo in page 8 of the book.
-- Fixed thaumaturgy table accepting repetitions of the same elements in a combination as a valid combination instead of checking for the exact elements.
-- Moved button styles into a button theme now being used by the game UI.
+- Now using TextureAtlas for lots of sprites.
+- Remade the game menu.
+- Rewriten the alchemy system.
+- Rewriten interaction system.
+- Rewriten alchemycal table system.
+- Rewriten book system.
+- Remade the book interface.
+- Updated interaction icons.
+- Added option to play using WASD for movement.

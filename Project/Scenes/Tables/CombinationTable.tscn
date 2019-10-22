@@ -1,34 +1,43 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/Tables/CombinationTable.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Tables/table_combination.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Elements/element_salt.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Interactables/Tables/CombinationTables.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/UI/Icon/icon_put.tres" type="Texture" id=2]
+[ext_resource path="res://Sprites/UI/Icon/icon_trash.tres" type="Texture" id=3]
+[ext_resource path="res://Sprites/Tables/table_combination.tres" type="Texture" id=4]
+[ext_resource path="res://Sprites/Elements/element_salt.tres" type="Texture" id=5]
+
 
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="CombinationTable" type="StaticBody2D" groups=[
+"Interactable",
 "Tables",
 ]]
 script = ExtResource( 1 )
+allow_interaction_e = true
+allow_interaction_t = true
+interaction_icon_e = ExtResource( 2 )
+interaction_icon_t = ExtResource( 3 )
+number_of_elements = 2
 
 [node name="table_sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 5.5, 4 )
 shape = SubResource( 1 )
 
-[node name="element_1" type="Sprite" parent="."]
+[node name="element_0" type="Sprite" parent="."]
 visible = false
 position = Vector2( -60, -20 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 offset = Vector2( 8.33333, 0 )
 
-[node name="element_2" type="Sprite" parent="."]
+[node name="element_1" type="Sprite" parent="."]
 visible = false
 position = Vector2( 5, -20 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 offset = Vector2( 8.33333, 0 )

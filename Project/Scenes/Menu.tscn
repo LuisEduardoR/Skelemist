@@ -1,45 +1,111 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/ElementDict.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/Themes/Default_theme.tres" type="Theme" id=3]
-[ext_resource path="res://Sprites/UI/Text/credits_text.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/UI/Text/quit_text.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/UI/logo.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/UI/Text/back_text.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/UI/Text/credits.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/ElementBase.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sprites/UI/background.png" type="Texture" id=10]
-[ext_resource path="res://Scenes/Tables/CombinationTable.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Tables/DerivationTable.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Scenes/Tables/ThaumaturgyTable.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scenes/Tables/TransmutingTable.tscn" type="PackedScene" id=14]
+[ext_resource path="res://TileSets/default_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Scenes/Tables/CombinationTable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Tables/DerivationTable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Tables/TransmutingTable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Tables/ThaumaturgyTable.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/ElementBase.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/UI/logo.png" type="Texture" id=8]
+[ext_resource path="res://UI/Themes/Default_theme.tres" type="Theme" id=9]
+[ext_resource path="res://Sprites/UI/Text/credits_text.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UI/Text/quit_text.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/UI/Text/credits.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/UI/Text/back_text.png" type="Texture" id=13]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/play_text.png-c71b7c2e93a6058ccc92063ea6c05167.stex"
 
-[node name="Node2D" type="Node2D"]
+[node name="Menu" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="ElementDict" parent="." instance=ExtResource( 2 )]
+[node name="Container" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Background" type="Node2D" parent="Container"]
+editor/display_folded = true
+
+[node name="TileMap" type="TileMap" parent="Container/Background"]
+scale = Vector2( 3, 3 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+format = 1
+tile_data = PoolIntArray( -65540, 0, 0, -65539, 1, 0, -65538, 20, 0, -65537, 2, 0, -131072, 2, 0, -131071, 2, 0, -131070, 2, 0, -131069, 2, 0, -131068, 2, 0, -131067, 2, 0, -131066, 2, 0, -131065, 2, 0, -131064, 2, 0, -131063, 2, 0, -131062, 2, 0, -131061, 2, 0, -131060, 18, 0, -131059, 3, 0, -131058, 4, 0, -4, 6, 0, -3, 5, 0, -2, 5, 0, -1, 30, 0, -65536, 5, 0, -65535, 5, 0, -65534, 5, 0, -65533, 5, 0, -65532, 5, 0, -65531, 5, 0, -65530, 30, 0, -65529, 31, 0, -65528, 5, 0, -65527, 5, 0, -65526, 31, 0, -65525, 5, 0, -65524, 31, 0, -65523, 30, 0, -65522, 16, 0, 65532, 22, 0, 65533, 5, 0, 65534, 5, 0, 65535, 5, 0, 0, 5, 0, 1, 30, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 5, 31, 0, 6, 31, 0, 7, 30, 0, 8, 5, 0, 9, 5, 0, 10, 5, 0, 11, 5, 0, 12, 5, 0, 13, 5, 0, 14, 19, 0, 131068, 7, 0, 131069, 31, 0, 131070, 5, 0, 131071, 31, 0, 65536, 5, 0, 65537, 30, 0, 65538, 5, 0, 65539, 5, 0, 65540, 5, 0, 65541, 5, 0, 65542, 30, 0, 65543, 30, 0, 65544, 5, 0, 65545, 5, 0, 65546, 31, 0, 65547, 5, 0, 65548, 5, 0, 65549, 5, 0, 65550, 15, 0, 196604, 7, 0, 196605, 5, 0, 196606, 31, 0, 196607, 5, 0, 131072, 5, 0, 131073, 5, 0, 131074, 5, 0, 131075, 5, 0, 131076, 5, 0, 131077, 5, 0, 131078, 5, 0, 131079, 5, 0, 131080, 5, 0, 131081, 5, 0, 131082, 5, 0, 131083, 5, 0, 131084, 5, 0, 131085, 31, 0, 131086, 15, 0, 262140, 7, 0, 262141, 5, 0, 262142, 5, 0, 262143, 5, 0, 196608, 5, 0, 196609, 31, 0, 196610, 30, 0, 196611, 5, 0, 196612, 5, 0, 196613, 5, 0, 196614, 5, 0, 196615, 5, 0, 196616, 5, 0, 196617, 31, 0, 196618, 5, 0, 196619, 30, 0, 196620, 5, 0, 196621, 5, 0, 196622, 15, 0, 327676, 7, 0, 327677, 5, 0, 327678, 30, 0, 327679, 5, 0, 262144, 5, 0, 262145, 5, 0, 262146, 5, 0, 262147, 5, 0, 262148, 5, 0, 262149, 5, 0, 262150, 5, 0, 262151, 5, 0, 262152, 5, 0, 262153, 5, 0, 262154, 5, 0, 262155, 5, 0, 262156, 5, 0, 262157, 5, 0, 262158, 15, 0, 393212, 28, 0, 393213, 5, 0, 393214, 5, 0, 393215, 5, 0, 327680, 31, 0, 327681, 5, 0, 327682, 5, 0, 327683, 30, 0, 327684, 5, 0, 327685, 5, 0, 327686, 5, 0, 327687, 5, 0, 327688, 5, 0, 327689, 31, 0, 327690, 5, 0, 327691, 5, 0, 327692, 5, 0, 327693, 5, 0, 327694, 24, 0, 458748, 8, 0, 458749, 30, 0, 458750, 5, 0, 458751, 5, 0, 393216, 31, 0, 393217, 5, 0, 393218, 5, 0, 393219, 30, 0, 393220, 31, 0, 393221, 5, 0, 393222, 5, 0, 393223, 5, 0, 393224, 5, 0, 393225, 5, 0, 393226, 30, 0, 393227, 5, 0, 393228, 5, 0, 393229, 31, 0, 393230, 14, 0, 524284, 9, 0, 524285, 10, 0, 524286, 26, 0, 524287, 11, 0, 458752, 11, 0, 458753, 11, 0, 458754, 11, 0, 458755, 11, 0, 458756, 11, 0, 458757, 11, 0, 458758, 11, 0, 458759, 11, 0, 458760, 11, 0, 458761, 11, 0, 458762, 11, 0, 458763, 11, 0, 458764, 25, 0, 458765, 12, 0, 458766, 13, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="Container/Background"]
 current = true
 
-[node name="Main" type="Control" parent="."]
-editor/display_folded = true
-margin_right = 1024.0
-margin_bottom = 600.0
+[node name="CombinationTable" parent="Container/Background" instance=ExtResource( 3 )]
+position = Vector2( -220, -32 )
 
-[node name="PlayButton" type="Button" parent="Main"]
-editor/display_folded = true
+[node name="DerivationTable" parent="Container/Background" instance=ExtResource( 4 )]
+position = Vector2( 1280, 612 )
+
+[node name="TransmutingTable" parent="Container/Background" instance=ExtResource( 5 )]
+position = Vector2( -220, 612 )
+
+[node name="ThaumaturgyTable" parent="Container/Background" instance=ExtResource( 6 )]
+position = Vector2( 1280, -32 )
+
+[node name="ElementBase1" parent="Container/Background" instance=ExtResource( 7 )]
+position = Vector2( 816, 552 )
+element_id = "fire"
+
+[node name="ElementBase2" parent="Container/Background" instance=ExtResource( 7 )]
+position = Vector2( 192, -24 )
+element_id = "water"
+
+[node name="ElementBase3" parent="Container/Background" instance=ExtResource( 7 )]
+position = Vector2( 816, -24 )
+element_id = "air"
+
+[node name="ElementBase4" parent="Container/Background" instance=ExtResource( 7 )]
+position = Vector2( 192, 552 )
+element_id = "earth"
+
+[node name="Main" type="Control" parent="Container"]
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="Logo" type="TextureRect" parent="Container/Main"]
+margin_left = -306.453
+margin_top = -280.0
+margin_right = 293.547
+margin_bottom = -40.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="MainButtons" type="VBoxContainer" parent="Container/Main"]
 margin_left = -200.0
-margin_top = -20.0
 margin_right = 200.0
-margin_bottom = 60.0
-theme = ExtResource( 3 )
+margin_bottom = 260.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
 
-[node name="TextureRect" type="TextureRect" parent="Main/PlayButton"]
+[node name="PlayButton" type="Button" parent="Container/Main/MainButtons"]
+editor/display_folded = true
+margin_right = 400.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 9 )
+
+[node name="TextureRect" type="TextureRect" parent="Container/Main/MainButtons/PlayButton"]
 margin_left = 40.0
 margin_top = 10.0
 margin_right = 360.0
@@ -47,104 +113,73 @@ margin_bottom = 70.0
 texture = SubResource( 1 )
 stretch_mode = 6
 
-[node name="CreditsButton" type="Button" parent="Main"]
+[node name="CreditsButton" type="Button" parent="Container/Main/MainButtons"]
 editor/display_folded = true
-margin_left = -200.0
-margin_top = 80.0
-margin_right = 200.0
-margin_bottom = 160.0
-theme = ExtResource( 3 )
+margin_top = 90.0
+margin_right = 400.0
+margin_bottom = 170.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 9 )
 
-[node name="TextureRect" type="TextureRect" parent="Main/CreditsButton"]
+[node name="TextureRect" type="TextureRect" parent="Container/Main/MainButtons/CreditsButton"]
 margin_left = 40.0
 margin_top = 10.0
 margin_right = 360.0
 margin_bottom = 70.0
-texture = ExtResource( 4 )
+texture = ExtResource( 10 )
 stretch_mode = 6
 
-[node name="QuitButton" type="Button" parent="Main"]
+[node name="QuitButton" type="Button" parent="Container/Main/MainButtons"]
 editor/display_folded = true
-margin_left = -200.0
-margin_top = 190.0
-margin_right = 200.0
-margin_bottom = 270.0
-theme = ExtResource( 3 )
+margin_top = 180.0
+margin_right = 400.0
+margin_bottom = 260.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 9 )
 
-[node name="TextureRect" type="TextureRect" parent="Main/QuitButton"]
+[node name="TextureRect" type="TextureRect" parent="Container/Main/MainButtons/QuitButton"]
 margin_left = 40.0
 margin_top = 10.0
 margin_right = 360.0
 margin_bottom = 70.0
-texture = ExtResource( 5 )
+texture = ExtResource( 11 )
 stretch_mode = 6
 
-[node name="logo" type="Sprite" parent="Main"]
-position = Vector2( 0, -160 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 6 )
-
-[node name="Credits" type="Control" parent="."]
+[node name="Credits" type="Control" parent="Container"]
 editor/display_folded = true
 visible = false
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 300.0
 
-[node name="BackButton" type="Button" parent="Credits"]
+[node name="Credits" type="TextureRect" parent="Container/Credits"]
+margin_left = -216.0
+margin_top = -264.0
+margin_right = 216.0
+margin_bottom = 276.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="BackButton" type="Button" parent="Container/Credits"]
 editor/display_folded = true
 margin_left = -200.0
-margin_top = 190.0
+margin_top = 180.0
 margin_right = 200.0
-margin_bottom = 270.0
-theme = ExtResource( 3 )
+margin_bottom = 260.0
+theme = ExtResource( 9 )
 
-[node name="TextureRect" type="TextureRect" parent="Credits/BackButton"]
+[node name="TextureRect" type="TextureRect" parent="Container/Credits/BackButton"]
 margin_left = 40.0
 margin_top = 10.0
 margin_right = 360.0
 margin_bottom = 70.0
-texture = ExtResource( 7 )
+texture = ExtResource( 13 )
 stretch_mode = 6
-
-[node name="credits" type="Sprite" parent="Credits"]
-scale = Vector2( 3, 3 )
-texture = ExtResource( 8 )
-
-[node name="Background" type="Node2D" parent="."]
-editor/display_folded = true
-
-[node name="ElementBase" parent="Background" instance=ExtResource( 9 )]
-position = Vector2( -360, -160 )
-element_id = 1
-
-[node name="ElementBase2" parent="Background" instance=ExtResource( 9 )]
-position = Vector2( -360, 160 )
-
-[node name="ElementBase3" parent="Background" instance=ExtResource( 9 )]
-position = Vector2( 360, -160 )
-element_id = 3
-
-[node name="ElementBase4" parent="Background" instance=ExtResource( 9 )]
-position = Vector2( 360, 160 )
-element_id = 4
-
-[node name="background" type="Sprite" parent="Background"]
-scale = Vector2( 3, 3 )
-z_index = -100
-texture = ExtResource( 10 )
-
-[node name="CombinationTable" parent="Background" instance=ExtResource( 11 )]
-position = Vector2( -512, 0 )
-
-[node name="DerivationTable" parent="Background" instance=ExtResource( 12 )]
-position = Vector2( 512, 0 )
-
-[node name="ThaumaturgyTable" parent="Background" instance=ExtResource( 13 )]
-position = Vector2( 0, -420 )
-
-[node name="TransmutingTable" parent="Background" instance=ExtResource( 14 )]
-position = Vector2( 0, 420 )
-[connection signal="pressed" from="Main/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="Main/CreditsButton" to="." method="_on_CreditsButton_pressed"]
-[connection signal="pressed" from="Main/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="pressed" from="Credits/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Container/Main/MainButtons/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Container/Main/MainButtons/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="Container/Main/MainButtons/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="Container/Credits/BackButton" to="." method="_on_BackButton_pressed"]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Scripts/AlchemyController.gd" type="Script" id=1]
+[ext_resource path="res://Elements/element_air_data.tres" type="Resource" id=2]
+[ext_resource path="res://Elements/element_blood_data.tres" type="Resource" id=3]
+[ext_resource path="res://Elements/element_earth_data.tres" type="Resource" id=4]
+[ext_resource path="res://Elements/element_fire_data.tres" type="Resource" id=5]
+[ext_resource path="res://Elements/element_flesh_data.tres" type="Resource" id=6]
+[ext_resource path="res://Elements/element_gold_data.tres" type="Resource" id=7]
+[ext_resource path="res://Elements/element_ice_data.tres" type="Resource" id=8]
+[ext_resource path="res://Elements/element_iron_data.tres" type="Resource" id=9]
+[ext_resource path="res://Elements/element_life_data.tres" type="Resource" id=10]
+[ext_resource path="res://Elements/element_magnetite_data.tres" type="Resource" id=11]
+[ext_resource path="res://Elements/element_mercury_data.tres" type="Resource" id=12]
+[ext_resource path="res://Elements/element_mud_data.tres" type="Resource" id=13]
+[ext_resource path="res://Elements/element_plant_data.tres" type="Resource" id=14]
+[ext_resource path="res://Elements/element_salt_data.tres" type="Resource" id=15]
+[ext_resource path="res://Elements/element_silver_data.tres" type="Resource" id=16]
+[ext_resource path="res://Elements/element_spark_data.tres" type="Resource" id=17]
+[ext_resource path="res://Elements/element_water_data.tres" type="Resource" id=18]
+[ext_resource path="res://Combinations/comb_r_spark.tres" type="Resource" id=19]
+[ext_resource path="res://Combinations/comb_r_iron.tres" type="Resource" id=20]
+
+
+
+[node name="AlchemyController" type="Node2D" groups=[
+"AlchemyController",
+]]
+script = ExtResource( 1 )
+element_data = {
+"air": ExtResource( 2 ),
+"blood": ExtResource( 3 ),
+"earth": ExtResource( 4 ),
+"fire": ExtResource( 5 ),
+"flesh": ExtResource( 6 ),
+"gold": ExtResource( 7 ),
+"ice": ExtResource( 8 ),
+"iron": ExtResource( 9 ),
+"life": ExtResource( 10 ),
+"magnetite": ExtResource( 11 ),
+"mercury": ExtResource( 12 ),
+"mud": ExtResource( 13 ),
+"plant": ExtResource( 14 ),
+"salt": ExtResource( 15 ),
+"silver": ExtResource( 16 ),
+"spark": ExtResource( 17 ),
+"water": ExtResource( 18 )
+}
+combination_recipes = [ ExtResource( 19 ), ExtResource( 20 ) ]

@@ -1,0 +1,257 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scripts/Interactables/Book.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/UI/Icon/icon_book.tres" type="Texture" id=2]
+[ext_resource path="res://Sprites/Other/book.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/UI/Text/Book/page_0.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/paper_background.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/UI/Text/Book/page_1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/Text/Book/page_2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/Text/Book/page_3.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/Text/Book/page_4.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/UI/Text/Book/page_5.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UI/Text/Book/page_6.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/UI/Text/Book/page_7.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/UI/Text/Book/page_8.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/UI/Icon/icon_page_left.tres" type="Texture" id=14]
+[ext_resource path="res://Sprites/UI/Icon/icon_page_close.tres" type="Texture" id=15]
+[ext_resource path="res://Sprites/UI/Icon/icon_page_right.tres" type="Texture" id=16]
+
+[node name="Book" type="Node2D" groups=[
+"Interactable",
+"Book",
+]]
+script = ExtResource( 1 )
+allow_interaction_e = true
+interaction_icon_e = ExtResource( 2 )
+pages = 8
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="interface" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = -472.0
+margin_bottom = -260.0
+
+[node name="page_0" type="TextureRect" parent="CanvasLayer/interface"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="page_1" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="page_2" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="page_3" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="page_4" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="page_5" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="page_6" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="page_7" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="page_8" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="page_9" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="icon_page_left" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 300.0
+margin_top = 508.0
+margin_right = 396.0
+margin_bottom = 556.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 14 )
+stretch_mode = 6
+
+[node name="icon_page_close" type="TextureRect" parent="CanvasLayer/interface"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 452.0
+margin_top = 508.0
+margin_right = 548.0
+margin_bottom = 556.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 15 )
+stretch_mode = 6
+
+[node name="icon_page_right" type="TextureRect" parent="CanvasLayer/interface"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 604.0
+margin_top = 508.0
+margin_right = 700.0
+margin_bottom = 556.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 16 )
+stretch_mode = 6

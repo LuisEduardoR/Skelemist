@@ -2,7 +2,7 @@
 
 ---
 
-**This branch is the main branch of the project, there are other branches dedicated to preserving the original jam version in it's pure and fixed states.**
+**This branch is part of the main project, there are other branches dedicated to preserving the original jam version in it's pure and fixed states.**
 
 ---
 
