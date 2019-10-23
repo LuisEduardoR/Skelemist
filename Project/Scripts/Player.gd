@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # Describes the game current state.
-enum GAME_STATE{
+enum GAME_STATE {
   	play,
   	book,
 	win
@@ -9,7 +9,6 @@ enum GAME_STATE{
 var current_state
 
 export var velocity = 240
-export var interact_range = 100
 
 # Element that has to be made for the game to be won.
 export var win_element_id = "life"
@@ -199,8 +198,16 @@ func get_closest_by_group(group, distance_multiplier):
 	var closest = null
 	var closest_distance = INF
 	for g_obj in group_objs:
+		
+		# If testing for interactable objects:
+		if group == "Interactable":
+			# Checks if the object has at least one interaction avaliable.
+			if not (g_obj.is_e_avaliable(self) or g_obj.is_r_avaliable(self) or g_obj.is_t_avaliable(self)):
+				continue
+		
+		# Checks for the distance.
 		var distance = global_position.distance_to(g_obj.global_position)
-		if distance < distance_multiplier * interact_range and closest_distance > distance:
+		if distance < distance_multiplier * g_obj.interaction_range and closest_distance > distance:
 			closest = g_obj
 			
 	return closest

@@ -1,6 +1,9 @@
 # Base class for interactable objects.
 extends Node2D
 
+# How distant the player can be to interact with thos object.
+export var interaction_range = 100
+
 # Used to indicate if an interactions should be allowed.
 export var allow_interaction_e = false
 export var allow_interaction_r = false

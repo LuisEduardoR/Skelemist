@@ -1,9 +1,4 @@
-- Now using TextureAtlas for lots of sprites.
-- Remade the game menu.
-- Rewriten the alchemy system.
-- Rewriten interaction system.
-- Rewriten alchemycal table system.
-- Rewriten book system.
-- Remade the book interface.
-- Updated interaction icons.
-- Added option to play using WASD for movement.
+- Moved interaction range to InteractionBase so it can be set per object.
+- Changed player interaction distance calculation to get the distance from the objects.
+- Added pits to block the way until filled with certain elements.
+- Changed the scenery.

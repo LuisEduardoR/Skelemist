@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/ElementBase.tscn" type="PackedScene" id=2]
@@ -6,24 +6,48 @@
 [ext_resource path="res://Scenes/Tables/DerivationTable.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Tables/TransmutingTable.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Tables/ThaumaturgyTable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://TileSets/default_tileset.tres" type="TileSet" id=7]
-[ext_resource path="res://Sprites/Other/cobweb_1.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Other/cobweb_2.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Other/love.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/UI/Icon/icon_controls.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/Book.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/EmptyPit.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/Interactables/EmptyPit.gd" type="Script" id=8]
+[ext_resource path="res://Sprites/UI/Icon/icon_put.tres" type="Texture" id=9]
+[ext_resource path="res://Sprites/Scenery/ice_filled_pit.tres" type="Texture" id=10]
+[ext_resource path="res://Sprites/Scenery/water_filled_pit_0.tres" type="Texture" id=11]
+[ext_resource path="res://Sprites/Scenery/water_filled_pit_1.tres" type="Texture" id=12]
+[ext_resource path="res://TileSets/default_tileset.tres" type="TileSet" id=13]
+[ext_resource path="res://Sprites/Other/cobweb_1.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Other/cobweb_2.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Scenery/door.tres" type="Texture" id=16]
+[ext_resource path="res://Sprites/Other/love.png" type="Texture" id=17]
+[ext_resource path="res://Scripts/Interactables/InteractableBase.gd" type="Script" id=18]
+[ext_resource path="res://Sprites/UI/Icon/icon_controls.png" type="Texture" id=19]
+[ext_resource path="res://Scenes/Book.tscn" type="PackedScene" id=20]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10.5837, 10.5801 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "ice",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "water",
+"speed": 2.0
+} ]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -96, 384 )
+position = Vector2( 0, 384 )
 
 [node name="ElementBase_air" parent="." instance=ExtResource( 2 )]
-position = Vector2( 336, 412 )
+position = Vector2( 1006, 512 )
 element_id = "air"
 
 [node name="ElementBase_earth" parent="." instance=ExtResource( 2 )]
-position = Vector2( 624, 412 )
+position = Vector2( 144, 320 )
 element_id = "earth"
 
 [node name="ElementBase_fire" parent="." instance=ExtResource( 2 )]
@@ -35,63 +59,144 @@ position = Vector2( 624, 48 )
 element_id = "water"
 
 [node name="CombinationTable" parent="." instance=ExtResource( 3 )]
-position = Vector2( 420, 48 )
+position = Vector2( 432, 48 )
 
 [node name="DerivationTable" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1200, 424 )
+position = Vector2( 1200, 528 )
 
 [node name="TransmutingTable" parent="." instance=ExtResource( 5 )]
-position = Vector2( 480, 704 )
+position = Vector2( 480, 768 )
 
 [node name="ThaumaturgyTable2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1200, 144 )
+position = Vector2( 1536, 192 )
 
 [node name="ThaumaturgyTable" parent="." instance=ExtResource( 6 )]
-position = Vector2( 768, -240 )
+position = Vector2( 768, -288 )
+
+[node name="EmptyPit" parent="." instance=ExtResource( 7 )]
+position = Vector2( 288, 384 )
+interaction_range = 225
+
+[node name="WaterPit" type="Node2D" parent="." groups=[
+"Interactable",
+]]
+editor/display_folded = true
+position = Vector2( 768, -96 )
+script = ExtResource( 8 )
+interaction_range = 225
+allow_interaction_e = true
+interaction_icon_e = ExtResource( 9 )
+fillable_element_ids = [ "ice" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WaterPit"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterPit/StaticBody2D"]
+scale = Vector2( 9, 9 )
+shape = SubResource( 1 )
+
+[node name="graphics" type="AnimatedSprite" parent="WaterPit"]
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+animation = "water"
+playing = true
+
+[node name="WaterPit2" type="Node2D" parent="." groups=[
+"Interactable",
+]]
+editor/display_folded = true
+position = Vector2( 480, 572 )
+rotation = 1.5708
+script = ExtResource( 8 )
+interaction_range = 225
+allow_interaction_e = true
+interaction_icon_e = ExtResource( 9 )
+fillable_element_ids = [ "ice" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WaterPit2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterPit2/StaticBody2D"]
+scale = Vector2( 9, 9 )
+shape = SubResource( 1 )
+
+[node name="graphics" type="AnimatedSprite" parent="WaterPit2"]
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+animation = "water"
+playing = true
+
+[node name="WaterPit3" type="Node2D" parent="." groups=[
+"Interactable",
+]]
+editor/display_folded = true
+position = Vector2( 1344, 192 )
+rotation = 3.14159
+script = ExtResource( 8 )
+interaction_range = 225
+allow_interaction_e = true
+interaction_icon_e = ExtResource( 9 )
+fillable_element_ids = [ "ice" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WaterPit3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterPit3/StaticBody2D"]
+scale = Vector2( 9, 9 )
+shape = SubResource( 1 )
+
+[node name="graphics" type="AnimatedSprite" parent="WaterPit3"]
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+animation = "water"
+frame = 1
+playing = true
 
 [node name="TileMap" type="TileMap" parent="."]
-editor/display_folded = true
 scale = Vector2( 3, 3 )
 z_index = -10
-tile_set = ExtResource( 7 )
+tile_set = ExtResource( 13 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -262138, 0, 0, -262137, 1, 0, -262136, 3, 0, -262135, 4, 0, -196602, 6, 0, -196601, 30, 0, -196600, 5, 0, -196599, 16, 0, -131066, 22, 0, -131065, 5, 0, -131064, 5, 0, -131063, 15, 0, -65535, 0, 0, -65534, 18, 0, -65533, 20, 0, -65532, 20, 0, -65531, 20, 0, -65530, 21, 0, -65529, 30, 0, -65528, 5, 0, -65527, 19, 0, 1, 6, 0, 2, 5, 0, 3, 31, 0, 4, 5, 0, 5, 5, 0, 6, 5, 0, 7, 5, 0, 8, 5, 0, 9, 17, 0, 10, 18, 0, 11, 2, 0, 12, 3, 0, 13, 4, 0, 65537, 22, 0, 65538, 5, 0, 65539, 30, 0, 65540, 5, 0, 65541, 30, 0, 65542, 5, 0, 65543, 5, 0, 65544, 31, 0, 65545, 5, 0, 65546, 5, 0, 65547, 5, 0, 65548, 5, 0, 65549, 16, 0, 196605, 0, 0, 196606, 1, 0, 196607, 2, 0, 131072, 20, 0, 131073, 21, 0, 131074, 5, 0, 131075, 5, 0, 131076, 5, 0, 131077, 5, 0, 131078, 30, 0, 131079, 5, 0, 131080, 5, 0, 131081, 5, 0, 131082, 5, 0, 131083, 5, 0, 131084, 5, 0, 131085, 15, 0, 262141, 22, 0, 262142, 5, 0, 262143, 30, 0, 196608, 5, 0, 196609, 5, 0, 196610, 31, 0, 196611, 5, 0, 196612, 5, 0, 196613, 5, 0, 196614, 5, 0, 196615, 5, 0, 196616, 31, 0, 196617, 5, 0, 196618, 30, 0, 196619, 5, 0, 196620, 31, 0, 196621, 15, 0, 327677, 28, 0, 327678, 5, 0, 327679, 5, 0, 262144, 5, 0, 262145, 5, 0, 262146, 5, 0, 262147, 5, 0, 262148, 5, 0, 262149, 5, 0, 262150, 5, 0, 262151, 31, 0, 262152, 5, 0, 262153, 5, 0, 262154, 5, 0, 262155, 5, 0, 262156, 5, 0, 262157, 14, 0, 393213, 9, 0, 393214, 10, 0, 393215, 11, 0, 327680, 11, 0, 327681, 11, 0, 327682, 12, 0, 327683, 27, 0, 327684, 31, 0, 327685, 5, 0, 327686, 23, 0, 327687, 11, 0, 327688, 11, 0, 327689, 11, 0, 327690, 11, 0, 327691, 11, 0, 327692, 12, 0, 327693, 13, 0, 393219, 7, 0, 393220, 5, 0, 393221, 30, 0, 393222, 15, 0, 458755, 7, 0, 458756, 5, 0, 458757, 5, 0, 458758, 15, 0, 524291, 9, 0, 524292, 10, 0, 524293, 12, 0, 524294, 13, 0 )
+tile_data = PoolIntArray( -327674, 0, 0, -327673, 1, 0, -327672, 3, 0, -327671, 4, 0, -262138, 6, 0, -262137, 5, 0, -262136, 31, 0, -262135, 16, 0, -196602, 7, 0, -196601, 30, 0, -196600, 30, 0, -196599, 16, 0, -131066, 22, 0, -131065, 32, 0, -131064, 33, 0, -131063, 15, 0, -65535, 0, 0, -65534, 1, 0, -65533, 2, 0, -65532, 2, 0, -65531, 20, 0, -65530, 21, 0, -65529, 34, 0, -65528, 35, 0, -65527, 19, 0, 1, 6, 0, 2, 5, 0, 3, 31, 0, 4, 5, 0, 5, 5, 0, 6, 5, 0, 7, 5, 0, 8, 5, 0, 9, 17, 0, 10, 18, 0, 11, 2, 0, 12, 2, 0, 13, 2, 0, 14, 2, 0, 15, 2, 0, 16, 3, 0, 17, 4, 0, 65537, 22, 0, 65538, 5, 0, 65539, 30, 0, 65540, 5, 0, 65541, 30, 0, 65542, 5, 0, 65543, 5, 0, 65544, 31, 0, 65545, 5, 0, 65546, 5, 0, 65547, 31, 0, 65548, 5, 0, 65549, 5, 0, 65550, 5, 0, 65551, 30, 0, 65552, 31, 0, 65553, 16, 0, 196604, 0, 0, 196605, 1, 0, 196606, 2, 0, 196607, 2, 0, 131072, 20, 0, 131073, 21, 0, 131074, 5, 0, 131075, 5, 0, 131076, 5, 0, 131077, 5, 0, 131078, 30, 0, 131079, 5, 0, 131080, 5, 0, 131081, 5, 0, 131082, 5, 0, 131083, 30, 0, 131084, 5, 0, 131085, 30, 0, 131086, 5, 0, 131087, 5, 0, 131088, 5, 0, 131089, 14, 0, 262140, 6, 0, 262141, 31, 0, 262142, 5, 0, 262143, 30, 0, 196608, 5, 0, 196609, 5, 0, 196610, 32, 0, 196611, 33, 0, 196612, 5, 0, 196613, 5, 0, 196614, 23, 0, 196615, 25, 0, 196616, 26, 0, 196617, 27, 0, 196618, 5, 0, 196619, 5, 0, 196620, 31, 0, 196621, 23, 0, 196622, 12, 0, 196623, 25, 0, 196624, 12, 0, 196625, 13, 0, 327676, 8, 0, 327677, 5, 0, 327678, 30, 0, 327679, 5, 0, 262144, 5, 0, 262145, 5, 0, 262146, 34, 0, 262147, 35, 0, 262148, 5, 0, 262149, 5, 0, 262150, 16, 0, 262153, 28, 0, 262154, 31, 0, 262155, 5, 0, 262156, 5, 0, 262157, 24, 0, 393212, 9, 0, 393213, 10, 0, 393214, 11, 0, 393215, 11, 0, 327680, 11, 0, 327681, 11, 0, 327682, 26, 0, 327683, 27, 0, 327684, 32, 0, 327685, 33, 0, 327686, 15, 0, 327689, 8, 0, 327690, 5, 0, 327691, 31, 0, 327692, 5, 0, 327693, 14, 0, 393219, 28, 0, 393220, 34, 0, 393221, 35, 0, 393222, 15, 0, 393225, 9, 0, 393226, 10, 0, 393227, 11, 0, 393228, 12, 0, 393229, 13, 0, 458755, 7, 0, 458756, 5, 0, 458757, 30, 0, 458758, 15, 0, 524291, 8, 0, 524292, 31, 0, 524293, 5, 0, 524294, 14, 0, 589827, 9, 0, 589828, 10, 0, 589829, 12, 0, 589830, 13, 0 )
 
 [node name="cobweb_1" type="Sprite" parent="TileMap"]
-position = Vector2( 208, -112 )
+position = Vector2( 208, -144 )
 z_index = 11
-texture = ExtResource( 8 )
+texture = ExtResource( 14 )
 
 [node name="cobweb_2" type="Sprite" parent="TileMap"]
-position = Vector2( 302, -112 )
+position = Vector2( 302, -145 )
 z_index = 11
-texture = ExtResource( 9 )
+texture = ExtResource( 15 )
 
 [node name="cobweb_3" type="Sprite" parent="TileMap"]
-position = Vector2( -80, 80 )
+position = Vector2( -112, 80 )
 z_index = 11
-texture = ExtResource( 8 )
+texture = ExtResource( 14 )
 
 [node name="cobweb_4" type="Sprite" parent="TileMap"]
-position = Vector2( 432, 174 )
+position = Vector2( 433, 206 )
 rotation = 1.5708
 z_index = 11
-texture = ExtResource( 9 )
+texture = ExtResource( 15 )
+
+[node name="door" type="Sprite" parent="TileMap"]
+position = Vector2( -112, 128 )
+z_index = 1
+texture = ExtResource( 16 )
 
 [node name="Love" type="Sprite" parent="." groups=[
 "Love",
 ]]
-position = Vector2( 480, 266 )
+position = Vector2( -96, 384 )
 rotation = -1.5708
 scale = Vector2( 3, 3 )
 z_index = -5
-texture = ExtResource( 10 )
+texture = ExtResource( 17 )
+script = ExtResource( 18 )
 
 [node name="icon_controls" type="Sprite" parent="."]
-position = Vector2( -384, 300 )
+position = Vector2( -440, 612 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 11 )
+texture = ExtResource( 19 )
 
-[node name="Book" parent="." instance=ExtResource( 12 )]
-position = Vector2( 80, 384 )
+[node name="Book" parent="." instance=ExtResource( 20 )]
+position = Vector2( 480, 240 )

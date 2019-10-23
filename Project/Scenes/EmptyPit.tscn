@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Interactables/EmptyPit.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/UI/Icon/icon_put.tres" type="Texture" id=2]
+[ext_resource path="res://Sprites/Scenery/empty_pit.tres" type="Texture" id=3]
+[ext_resource path="res://Sprites/Scenery/earth_filled_pit.tres" type="Texture" id=4]
+[ext_resource path="res://Sprites/Scenery/mud_filled_pit.tres" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10.5837, 10.5801 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "empty",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "earth",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "mud",
+"speed": 5.0
+} ]
+
+[node name="EmptyPit" type="Node2D" groups=[
+"Interactable",
+]]
+script = ExtResource( 1 )
+interaction_range = 250
+allow_interaction_e = true
+interaction_icon_e = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2( 9, 9 )
+shape = SubResource( 1 )
+
+[node name="graphics" type="AnimatedSprite" parent="."]
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+animation = "empty"
