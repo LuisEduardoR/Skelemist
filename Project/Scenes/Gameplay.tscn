@@ -9,9 +9,9 @@
 [ext_resource path="res://Scenes/EmptyPit.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/Interactables/EmptyPit.gd" type="Script" id=8]
 [ext_resource path="res://Sprites/UI/Icon/icon_put.tres" type="Texture" id=9]
-[ext_resource path="res://Sprites/Scenery/ice_filled_pit.tres" type="Texture" id=10]
-[ext_resource path="res://Sprites/Scenery/water_filled_pit_0.tres" type="Texture" id=11]
-[ext_resource path="res://Sprites/Scenery/water_filled_pit_1.tres" type="Texture" id=12]
+[ext_resource path="res://Sprites/Scenery/water_filled_pit_0.tres" type="Texture" id=10]
+[ext_resource path="res://Sprites/Scenery/water_filled_pit_1.tres" type="Texture" id=11]
+[ext_resource path="res://Sprites/Scenery/ice_filled_pit.tres" type="Texture" id=12]
 [ext_resource path="res://TileSets/default_tileset.tres" type="TileSet" id=13]
 [ext_resource path="res://Sprites/Other/cobweb_1.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/Other/cobweb_2.png" type="Texture" id=15]
@@ -26,15 +26,15 @@ extents = Vector2( 10.5837, 10.5801 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "ice",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "water",
 "speed": 2.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "ice",
+"speed": 5.0
 } ]
 
 [node name="Node2D" type="Node2D"]
@@ -150,6 +150,7 @@ frame = 1
 playing = true
 
 [node name="TileMap" type="TileMap" parent="."]
+editor/display_folded = true
 scale = Vector2( 3, 3 )
 z_index = -10
 tile_set = ExtResource( 13 )
@@ -199,4 +200,4 @@ scale = Vector2( 3, 3 )
 texture = ExtResource( 19 )
 
 [node name="Book" parent="." instance=ExtResource( 20 )]
-position = Vector2( 480, 240 )
+position = Vector2( 474.624, 374.092 )

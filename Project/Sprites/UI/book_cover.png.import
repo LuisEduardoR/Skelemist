@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/page_4.png-a9116f8c93f659725499ef7a20409d00.stex"
+path="res://.import/book_cover.png-096dd4e7096a7a7387e8edc7563d8581.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/Text/Book/page_4.png"
-dest_files=[ "res://.import/page_4.png-a9116f8c93f659725499ef7a20409d00.stex" ]
+source_file="res://Sprites/UI/book_cover.png"
+dest_files=[ "res://.import/book_cover.png-096dd4e7096a7a7387e8edc7563d8581.stex" ]
 
 [params]
 

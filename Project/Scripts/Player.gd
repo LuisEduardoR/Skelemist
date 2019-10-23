@@ -4,9 +4,11 @@ extends KinematicBody2D
 enum GAME_STATE {
   	play,
   	book,
-	win
+	win,
+	pause
 }
 var current_state
+var previous_state
 
 export var velocity = 240
 
@@ -30,8 +32,8 @@ var default_element_sprite_pos # Stored to be used for the animation.
 
 func _ready():
 	
-	# Sets the default game state.
-	current_state = GAME_STATE.play
+	# Sets the game default state.
+	set_state(GAME_STATE.play)
 	
 	# Gets the alchemy controller, if there is more than one in the scene the first on the array will be used.
 	alchemy_controller = get_tree().get_nodes_in_group("AlchemyController")[0]
@@ -44,12 +46,16 @@ func _ready():
 	
 	# Gets the random number for the animations.
 	anim_rand_offset = randi()
+	
+	# Allows this script to run when paused.
+	pause_mode = Node.PAUSE_MODE_PROCESS
+	$Pause.pause_mode = Node.PAUSE_MODE_PROCESS
 
 func _process(delta):
 	
 	# Checks for the win state.
 	if current_element_id == win_element_id:
-		current_state = GAME_STATE.win
+		set_state(GAME_STATE.win)
 	
 	process_movement(delta)
 	process_interaction()
@@ -61,7 +67,7 @@ func _process(delta):
 func process_movement(delta):
 	
 	# Doesn't move if reading the book.
-	if current_state == GAME_STATE.book:
+	if current_state == GAME_STATE.book or current_state == GAME_STATE.pause:
 		return
 	
 	# Receives movement input.
@@ -104,6 +110,11 @@ func process_interaction():
 	
 	# If in the play state look for interactions normally.
 	if current_state == GAME_STATE.play:
+		
+		# Pauses the game showing the menu.
+		if Input.is_action_just_pressed("ui_cancel"):
+			set_state(GAME_STATE.pause)
+			return
 		
 		# Gets the closest interactable item.
 		var interactable = get_closest_by_group("Interactable", 1)
@@ -158,8 +169,10 @@ func process_interaction():
 		elif (interactable != null and not interactable.allow_interaction_r):
 			$icons/interact_r.hide()
 	
-	# If in the book state, hides icons and does nothing leaving interaction to the book.
+	# If in the book state stops the player and leaves interaction to the book.
 	elif current_state == GAME_STATE.book:
+		
+		# Hide sthe interaction icons.
 		$icons/interact_e.hide()
 		$icons/interact_r.hide()
 		$icons/interact_t.hide()
@@ -187,6 +200,18 @@ func process_interaction():
 			$icons/interact_r.hide()
 			if Input.is_action_just_pressed("ui_interact_e"):
 				get_tree().change_scene("res://Scenes/Endings/SelfEnd.tscn")
+				
+	# If the game is paused show the pause menu and disallows interaction.
+	elif current_state == GAME_STATE.pause:
+		
+		# Hide sthe interaction icons.
+		$icons/interact_e.hide()
+		$icons/interact_r.hide()
+		$icons/interact_t.hide()
+		
+		# Unpauses the game.
+		if Input.is_action_just_pressed("ui_cancel"):
+			set_state(previous_state)
 
 # Gets the closest object within a certain group.
 func get_closest_by_group(group, distance_multiplier):
@@ -224,3 +249,33 @@ func set_element_hold(id):
 		return
 	$icons/hold_element.set_texture(alchemy_controller.get_element_data(id).texture)
 	$icons/hold_element.show()
+	
+# Changes the player state and saves the previous state.
+func set_state(state):
+	
+	# Gets if the game time should be paused or not.
+	if state == GAME_STATE.book or state == GAME_STATE.pause:
+		get_tree().paused = true
+		$graphics.pause_mode = Node.PAUSE_MODE_STOP
+		
+		if state == GAME_STATE.pause:
+			$Pause/Container.show()
+		
+	else:
+		get_tree().paused = false
+		$graphics.pause_mode = Node.PAUSE_MODE_INHERIT
+		$Pause/Container.hide()
+	
+	previous_state = current_state # Saves the previous state.
+	current_state = state
+
+# Unpauses the game.
+func _on_ContinueButton_pressed():
+	set_state(previous_state)
+
+# Quits to the menu.
+func _on_MenuButton_pressed():
+	
+	# Unpauses the tree and goes to the menu.
+	get_tree().paused = false
+	get_tree().change_scene("res://Scenes/Menu.tscn")

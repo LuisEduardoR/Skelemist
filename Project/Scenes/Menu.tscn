@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://TileSets/default_tileset.tres" type="TileSet" id=2]
@@ -8,14 +8,8 @@
 [ext_resource path="res://Scenes/Tables/ThaumaturgyTable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/ElementBase.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sprites/UI/logo.png" type="Texture" id=8]
-[ext_resource path="res://UI/Themes/Default_theme.tres" type="Theme" id=9]
-[ext_resource path="res://Sprites/UI/Text/credits_text.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/UI/Text/quit_text.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/UI/Text/credits.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/UI/Text/back_text.png" type="Texture" id=13]
-
-[sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/play_text.png-c71b7c2e93a6058ccc92063ea6c05167.stex"
+[ext_resource path="res://UI/Themes/DefaultUI_theme.tres" type="Theme" id=9]
+[ext_resource path="res://Sprites/UI/Text/credits.png" type="Texture" id=10]
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -81,9 +75,9 @@ margin_right = 512.0
 margin_bottom = 300.0
 
 [node name="Logo" type="TextureRect" parent="Container/Main"]
-margin_left = -306.453
+margin_left = -300.0
 margin_top = -280.0
-margin_right = 293.547
+margin_right = 300.0
 margin_bottom = -40.0
 texture = ExtResource( 8 )
 expand = true
@@ -98,57 +92,32 @@ size_flags_vertical = 3
 custom_constants/separation = 10
 
 [node name="PlayButton" type="Button" parent="Container/Main/MainButtons"]
-editor/display_folded = true
 margin_right = 400.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 9 )
-
-[node name="TextureRect" type="TextureRect" parent="Container/Main/MainButtons/PlayButton"]
-margin_left = 40.0
-margin_top = 10.0
-margin_right = 360.0
-margin_bottom = 70.0
-texture = SubResource( 1 )
-stretch_mode = 6
+text = "Play"
 
 [node name="CreditsButton" type="Button" parent="Container/Main/MainButtons"]
-editor/display_folded = true
 margin_top = 90.0
 margin_right = 400.0
 margin_bottom = 170.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 9 )
-
-[node name="TextureRect" type="TextureRect" parent="Container/Main/MainButtons/CreditsButton"]
-margin_left = 40.0
-margin_top = 10.0
-margin_right = 360.0
-margin_bottom = 70.0
-texture = ExtResource( 10 )
-stretch_mode = 6
+text = "Credits"
 
 [node name="QuitButton" type="Button" parent="Container/Main/MainButtons"]
-editor/display_folded = true
 margin_top = 180.0
 margin_right = 400.0
 margin_bottom = 260.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 9 )
-
-[node name="TextureRect" type="TextureRect" parent="Container/Main/MainButtons/QuitButton"]
-margin_left = 40.0
-margin_top = 10.0
-margin_right = 360.0
-margin_bottom = 70.0
-texture = ExtResource( 11 )
-stretch_mode = 6
+text = "Quit"
 
 [node name="Credits" type="Control" parent="Container"]
-editor/display_folded = true
 visible = false
 margin_left = 512.0
 margin_top = 300.0
@@ -160,25 +129,17 @@ margin_left = -216.0
 margin_top = -264.0
 margin_right = 216.0
 margin_bottom = 276.0
-texture = ExtResource( 12 )
+texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
 
 [node name="BackButton" type="Button" parent="Container/Credits"]
-editor/display_folded = true
 margin_left = -200.0
 margin_top = 180.0
 margin_right = 200.0
 margin_bottom = 260.0
 theme = ExtResource( 9 )
-
-[node name="TextureRect" type="TextureRect" parent="Container/Credits/BackButton"]
-margin_left = 40.0
-margin_top = 10.0
-margin_right = 360.0
-margin_bottom = 70.0
-texture = ExtResource( 13 )
-stretch_mode = 6
+text = "Back"
 [connection signal="pressed" from="Container/Main/MainButtons/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Container/Main/MainButtons/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="Container/Main/MainButtons/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -3,8 +3,8 @@ extends "res://Scripts/Interactables/InteractableBase.gd"
 # If the box is opened.
 var opened
 
-# Must be set to the number of pages.
-export var pages = 0
+# Must be set to the number of the last page (considering the book starts at 0).
+export var last_page = 0
 
 # Current page.
 var cur_page
@@ -17,6 +17,9 @@ func _ready():
 	# Initializes the book.
 	opened = false
 	cur_page = 0;
+	
+	# Allows this script to run when paused.
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	
 func _process(delta):
 	
@@ -31,7 +34,7 @@ func _process(delta):
 			$CanvasLayer/interface.hide()
 			
 			# Resets player state.
-			player.current_state = player.GAME_STATE.play
+			player.set_state(player.previous_state)
 			
 		if Input.is_action_just_pressed("ui_left"): # Previous page.
 			prev_page()
@@ -44,23 +47,23 @@ func interact_e(player):
 	opened = true
 	
 	# Sets the player state.
-	player.current_state = player.GAME_STATE.book
+	player.set_state(player.GAME_STATE.book)
 	self.player = player
 	
-	# SHows the interface.
+	# Shows the interface.
 	$CanvasLayer/interface.show()
 	
 
 # Goes to the next page.
 func next_page():
 	
-	if cur_page < pages:
+	if cur_page < last_page:
 		
 		# Hides current page.W
 		get_node("CanvasLayer/interface/page_" + str(cur_page)).hide()
-		# Shows next page.
+		
+		# Updates page number.
 		cur_page += 1
-		get_node("CanvasLayer/interface/page_" + str(cur_page)).show()
 		
 		# Update interaction icons.
 		update_icons()
@@ -70,11 +73,10 @@ func prev_page():
 
 	if cur_page > 0:
 		
-		# Hides current page.
-		get_node("CanvasLayer/interface/page_" + str(cur_page)).hide()
-		
-		# Shows next page.
+		# Updates page number.
 		cur_page -= 1
+		# Shows next page.
+		
 		get_node("CanvasLayer/interface/page_" + str(cur_page)).show()
 		
 		# Update interaction icons.
@@ -88,7 +90,7 @@ func update_icons():
 	else:
 		$CanvasLayer/interface/icon_page_left.hide()
 		
-	if cur_page < pages - 1:
+	if cur_page < last_page - 1:
 		$CanvasLayer/interface/icon_page_right.show()
 	else:
 		$CanvasLayer/interface/icon_page_right.hide()

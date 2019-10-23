@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/UI/Icon/icon_drop.tres" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Sprites/Elements/element_salt.tres" type="Texture" id=6]
 [ext_resource path="res://Sprites/UI/Icon/icon_put.tres" type="Texture" id=7]
 [ext_resource path="res://Sprites/UI/Icon/icon_trash.tres" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/logo.png" type="Texture" id=9]
+[ext_resource path="res://UI/Themes/DefaultUI_theme.tres" type="Theme" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 5.43374
@@ -64,3 +66,60 @@ visible = false
 position = Vector2( -32, 8 )
 z_index = 15
 texture = ExtResource( 8 )
+
+[node name="Pause" type="CanvasLayer" parent="."]
+
+[node name="Container" type="CenterContainer" parent="Pause"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Main" type="Control" parent="Pause/Container"]
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="Logo" type="TextureRect" parent="Pause/Container/Main"]
+margin_left = -300.0
+margin_top = -240.0
+margin_right = 300.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="MainButtons" type="VBoxContainer" parent="Pause/Container/Main"]
+margin_left = -200.0
+margin_top = 40.0
+margin_right = 200.0
+margin_bottom = 220.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+
+[node name="ContinueButton" type="Button" parent="Pause/Container/Main/MainButtons"]
+margin_right = 400.0
+margin_bottom = 85.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 10 )
+text = "Continue"
+
+[node name="MenuButton" type="Button" parent="Pause/Container/Main/MainButtons"]
+margin_top = 95.0
+margin_right = 400.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 10 )
+text = "Menu"
+[connection signal="pressed" from="Pause/Container/Main/MainButtons/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="Pause/Container/Main/MainButtons/MenuButton" to="." method="_on_MenuButton_pressed"]
