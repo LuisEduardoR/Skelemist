@@ -1,9 +1,1 @@
-- Moved interaction range to InteractionBase so it can be set per object.
-- Changed player interaction distance calculation to get the distance from the objects.
-- Added pits to block the way until filled with certain elements.
-- Changed the scenery.
-- Additions to player state system.
-- Now using fonts for menu text.
-- Changed the book to use UI elements.
-- Remade book pages.
-- Added pause menu.
+- Changed the book to show two pages at the same time.

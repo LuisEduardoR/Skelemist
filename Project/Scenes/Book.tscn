@@ -1,29 +1,30 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scripts/Interactables/Book.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/UI/Icon/icon_book.tres" type="Texture" id=2]
 [ext_resource path="res://Sprites/Other/book.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/UI/paper_background.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/pages.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/UI/Button/button.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/UI/Button/button_disabled.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/UI/Button/button_hover.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/UI/Button/button_press.png" type="Texture" id=8]
 [ext_resource path="res://UI/Fonts/Book_font.tres" type="DynamicFont" id=9]
-[ext_resource path="res://Sprites/Elements/element_life.tres" type="Texture" id=10]
-[ext_resource path="res://Sprites/Other/potion.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/UI/pabe_missing.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Elements/element_salt.tres" type="Texture" id=13]
-[ext_resource path="res://Sprites/Tables/table_thaumaturgy.tres" type="Texture" id=14]
-[ext_resource path="res://Sprites/Elements/element_blood.tres" type="Texture" id=15]
-[ext_resource path="res://Sprites/Tables/table_transmutation.tres" type="Texture" id=16]
-[ext_resource path="res://Sprites/Elements/element_mercury.tres" type="Texture" id=17]
-[ext_resource path="res://Sprites/Tables/table_combination.tres" type="Texture" id=18]
-[ext_resource path="res://Sprites/Tables/table_derivation.tres" type="Texture" id=19]
-[ext_resource path="res://UI/Themes/DefaultUI_theme.tres" type="Theme" id=20]
-[ext_resource path="res://Sprites/UI/book_cover.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/UI/Icon/icon_page_left.tres" type="Texture" id=22]
-[ext_resource path="res://Sprites/UI/Icon/icon_page_close.tres" type="Texture" id=23]
-[ext_resource path="res://Sprites/UI/Icon/icon_page_right.tres" type="Texture" id=24]
+[ext_resource path="res://Sprites/UI/page_missing_l.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UI/page_missing_r.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Elements/element_life.tres" type="Texture" id=12]
+[ext_resource path="res://Sprites/Other/potion.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Elements/element_salt.tres" type="Texture" id=14]
+[ext_resource path="res://Sprites/Tables/table_thaumaturgy.tres" type="Texture" id=15]
+[ext_resource path="res://Sprites/Elements/element_blood.tres" type="Texture" id=16]
+[ext_resource path="res://Sprites/Tables/table_transmutation.tres" type="Texture" id=17]
+[ext_resource path="res://Sprites/Elements/element_mercury.tres" type="Texture" id=18]
+[ext_resource path="res://Sprites/Tables/table_combination.tres" type="Texture" id=19]
+[ext_resource path="res://Sprites/Tables/table_derivation.tres" type="Texture" id=20]
+[ext_resource path="res://UI/Themes/DefaultUI_theme.tres" type="Theme" id=21]
+[ext_resource path="res://Sprites/UI/book_cover.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/UI/Icon/icon_page_left.tres" type="Texture" id=23]
+[ext_resource path="res://Sprites/UI/Icon/icon_page_close.tres" type="Texture" id=24]
+[ext_resource path="res://Sprites/UI/Icon/icon_page_right.tres" type="Texture" id=25]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -63,7 +64,7 @@ Button/styles/pressed = SubResource( 4 )
 script = ExtResource( 1 )
 allow_interaction_e = true
 interaction_icon_e = ExtResource( 2 )
-last_page = 11
+last_page = 10
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )
@@ -83,40 +84,9 @@ margin_top = -300.0
 margin_right = -472.0
 margin_bottom = -260.0
 
-[node name="page_11" type="TextureRect" parent="CanvasLayer/interface"]
-editor/display_folded = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 1004.0
-margin_bottom = 500.0
-rect_clip_content = true
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 6
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_11"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -162.0
-margin_top = 28.0
-margin_right = 188.0
-margin_bottom = 500.0
-theme = SubResource( 5 )
-custom_fonts/normal_font = ExtResource( 9 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-tab_size = 0
-text = "    The ingredients are supposed to be \"breath, fluid and flesh\", and the potion can only be drunk in the noblest of cups!
-	
-    It's also said that one can only try making it once, all following attempts would be met with terrible failure."
-
 [node name="page_10" type="TextureRect" parent="CanvasLayer/interface"]
 editor/display_folded = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -135,33 +105,90 @@ stretch_mode = 6
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_10"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -162.0
+margin_left = -357.0
 margin_top = 28.0
-margin_right = 188.0
+margin_right = -7.0
 margin_bottom = 500.0
 theme = SubResource( 5 )
 custom_fonts/normal_font = ExtResource( 9 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 0
-text = "                        Rumours tell
-                    about a mythic
-                    potion that can bring any corpse back to life in a more permant manner, it's said this potion can even regenerate flesh to a skeleton!
-					
-    It's told that only the most talented alchemists have a chance in attempting this creation."
+text = "    The ingredients are supposed to be \"breath, fluid and flesh\", and the potion can only be drunk in the noblest of cups!
+	
+    It's also said that one can only try making it once, all following attempts would be met with terrible failure."
 
-[node name="Life" type="TextureRect" parent="CanvasLayer/interface/page_10"]
+[node name="PageNumber" type="Label" parent="CanvasLayer/interface/page_10"]
+margin_left = 408.0
+margin_top = 480.0
+margin_right = 504.0
+margin_bottom = 510.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "75"
+align = 2
+
+[node name="missing" type="TextureRect" parent="CanvasLayer/interface/page_10"]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-margin_left = -132.0
-margin_top = 48.0
-margin_right = -84.0
-margin_bottom = 96.0
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -260.0
+margin_right = 512.0
+margin_bottom = 260.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
 
 [node name="page_9" type="TextureRect" parent="CanvasLayer/interface"]
 editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_9"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -357.0
+margin_top = 28.0
+margin_right = -7.0
+margin_bottom = 500.0
+theme = SubResource( 5 )
+custom_fonts/normal_font = ExtResource( 9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+tab_size = 0
+text = "    The ingredients are supposed to be \"breath, fluid and flesh\", and the potion can only be drunk in the noblest of cups!
+	
+    It's also said that one can only try making it once, all following attempts would be met with terrible failure."
+
+[node name="PageNumber" type="Label" parent="CanvasLayer/interface/page_9"]
+margin_left = 408.0
+margin_top = 480.0
+margin_right = 504.0
+margin_bottom = 510.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "75"
+align = 2
+
+[node name="page_8" type="TextureRect" parent="CanvasLayer/interface"]
+editor/display_folded = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -177,12 +204,58 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_9"]
+[node name="p2" type="Control" parent="CanvasLayer/interface/page_8"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_8/p2"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -162.0
+margin_left = 520.0
 margin_top = 28.0
-margin_right = 188.0
+margin_right = 870.0
+margin_bottom = 500.0
+theme = SubResource( 5 )
+custom_fonts/normal_font = ExtResource( 9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+tab_size = 0
+text = "                        Rumours tell
+                    about another
+                    potion that can bring any corpse back to life in a more permant manner, it's said this potion can even regenerate flesh to a skeleton!
+					
+    It's told that only the most talented alchemists have a chance in attempting this creation."
+
+[node name="Life" type="TextureRect" parent="CanvasLayer/interface/page_8/p2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 548.0
+margin_top = 48.0
+margin_right = 596.0
+margin_bottom = 96.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="PageNumber" type="Label" parent="CanvasLayer/interface/page_8/p2"]
+margin_left = 792.0
+margin_top = 480.0
+margin_right = 888.0
+margin_bottom = 510.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "74"
+align = 2
+
+[node name="p1" type="Control" parent="CanvasLayer/interface/page_8"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_8/p1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 135.0
+margin_top = 28.0
+margin_right = 485.0
 margin_bottom = 500.0
 theme = SubResource( 5 )
 custom_fonts/normal_font = ExtResource( 9 )
@@ -195,40 +268,30 @@ to life for a small period of time.
     
     The catch is that the time after death for the effect to take place appears to be random. It's not uncommon for users to come back as skeletons long after being buried."
 
-[node name="Potion" type="TextureRect" parent="CanvasLayer/interface/page_9"]
+[node name="Potion" type="TextureRect" parent="CanvasLayer/interface/page_8/p1"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -132.0
+margin_left = 160.0
 margin_top = 48.0
-margin_right = -84.0
+margin_right = 208.0
 margin_bottom = 96.0
-texture = ExtResource( 11 )
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 6
 
-[node name="page_8" type="Control" parent="CanvasLayer/interface"]
-editor/display_folded = true
-margin_right = 1024.0
-margin_bottom = 512.0
-
-[node name="missing" type="TextureRect" parent="CanvasLayer/interface/page_8"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -256.0
-margin_right = 512.0
-margin_bottom = 264.0
-rect_clip_content = true
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 12 )
-expand = true
-stretch_mode = 6
+[node name="PageNumber" type="Label" parent="CanvasLayer/interface/page_8/p1"]
+margin_left = 408.0
+margin_top = 480.0
+margin_right = 504.0
+margin_bottom = 510.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "73"
+align = 2
 
 [node name="page_7" type="TextureRect" parent="CanvasLayer/interface"]
 editor/display_folded = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -244,12 +307,28 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
+[node name="missing" type="TextureRect" parent="CanvasLayer/interface/page_7"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -260.0
+margin_right = 512.0
+margin_bottom = 260.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_7"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -162.0
+margin_left = 28.0
 margin_top = 186.0
-margin_right = 188.0
+margin_right = 378.0
 margin_bottom = 478.0
 theme = SubResource( 5 )
 custom_fonts/normal_font = ExtResource( 9 )
@@ -266,37 +345,44 @@ text = "SALT!
 [node name="Salt" type="TextureRect" parent="CanvasLayer/interface/page_7"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -64.0
+margin_left = 122.0
 margin_top = 24.0
-margin_right = 80.0
+margin_right = 266.0
 margin_bottom = 168.0
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 expand = true
 stretch_mode = 6
 
-[node name="page_6" type="Control" parent="CanvasLayer/interface"]
-editor/display_folded = true
-margin_right = 1024.0
-margin_bottom = 512.0
+[node name="PageNumber" type="Label" parent="CanvasLayer/interface/page_7"]
+margin_left = 792.0
+margin_top = 480.0
+margin_right = 888.0
+margin_bottom = 510.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "72"
+align = 2
 
-[node name="missing" type="TextureRect" parent="CanvasLayer/interface/page_6"]
+[node name="page_6" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -256.0
-margin_right = 512.0
-margin_bottom = 264.0
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
 rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 expand = true
 stretch_mode = 6
 
 [node name="page_5" type="TextureRect" parent="CanvasLayer/interface"]
 editor/display_folded = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -312,12 +398,16 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_5"]
+[node name="p2" type="Control" parent="CanvasLayer/interface/page_5"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_5/p2"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -162.0
+margin_left = 520.0
 margin_top = 190.0
-margin_right = 188.0
+margin_right = 870.0
 margin_bottom = 500.0
 theme = SubResource( 5 )
 custom_fonts/normal_font = ExtResource( 9 )
@@ -325,51 +415,48 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 0
 text = "   The thaumaturgy table can generate vital fluid from the world's basic elements."
 
-[node name="Table" type="TextureRect" parent="CanvasLayer/interface/page_5"]
+[node name="Table" type="TextureRect" parent="CanvasLayer/interface/page_5/p2"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -48.0
+margin_left = 240.49
 margin_top = 64.0
-margin_right = 48.0
+margin_right = 336.49
 margin_bottom = 160.0
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 6
-
-[node name="Blood" type="TextureRect" parent="CanvasLayer/interface/page_5"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -24.0
-margin_top = 384.0
-margin_right = 24.0
-margin_bottom = 432.0
 texture = ExtResource( 15 )
 expand = true
 stretch_mode = 6
 
-[node name="page_4" type="TextureRect" parent="CanvasLayer/interface"]
-editor/display_folded = true
+[node name="Blood" type="TextureRect" parent="CanvasLayer/interface/page_5/p2"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 1004.0
-margin_bottom = 500.0
-rect_clip_content = true
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 4 )
+margin_left = 658.0
+margin_top = 384.0
+margin_right = 706.0
+margin_bottom = 432.0
+texture = ExtResource( 16 )
 expand = true
 stretch_mode = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_4"]
+[node name="PageNumber" type="Label" parent="CanvasLayer/interface/page_5/p2"]
+margin_left = 792.0
+margin_top = 480.0
+margin_right = 888.0
+margin_bottom = 510.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "47"
+align = 2
+
+[node name="p1" type="Control" parent="CanvasLayer/interface/page_5"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_5/p1"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -162.0
+margin_left = 135.0
 margin_top = 190.0
-margin_right = 188.0
+margin_right = 485.0
 margin_bottom = 500.0
 theme = SubResource( 5 )
 custom_fonts/normal_font = ExtResource( 9 )
@@ -377,38 +464,49 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 0
 text = "   The transmutation table can transform a metal into a more noble form, but mercury is needed!"
 
-[node name="Table" type="TextureRect" parent="CanvasLayer/interface/page_4"]
+[node name="TableTransmutation" type="TextureRect" parent="CanvasLayer/interface/page_5/p1"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -48.0
+margin_left = 628.0
 margin_top = 64.0
-margin_right = 48.0
+margin_right = 724.0
 margin_bottom = 160.0
-texture = ExtResource( 16 )
-expand = true
-stretch_mode = 6
-
-[node name="Mercury" type="TextureRect" parent="CanvasLayer/interface/page_4"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -24.0
-margin_top = 384.0
-margin_right = 24.0
-margin_bottom = 432.0
 texture = ExtResource( 17 )
 expand = true
 stretch_mode = 6
 
-[node name="page_3" type="TextureRect" parent="CanvasLayer/interface"]
+[node name="Mercury" type="TextureRect" parent="CanvasLayer/interface/page_5/p1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 268.0
+margin_top = 384.0
+margin_right = 316.0
+margin_bottom = 432.0
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+
+[node name="PageNumber" type="Label" parent="CanvasLayer/interface/page_5/p1"]
+margin_left = 408.0
+margin_top = 480.0
+margin_right = 504.0
+margin_bottom = 510.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "46"
+align = 2
+
+[node name="page_4" type="TextureRect" parent="CanvasLayer/interface"]
 editor/display_folded = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -20.0
-margin_top = -20.0
+margin_top = -19.3698
 margin_right = 1004.0
-margin_bottom = 500.0
+margin_bottom = 500.63
 rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -416,12 +514,12 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
-[node name="RichTextLabel_Comb" type="RichTextLabel" parent="CanvasLayer/interface/page_3"]
+[node name="RichTextLabel_Comb" type="RichTextLabel" parent="CanvasLayer/interface/page_4"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -162.0
+margin_left = 16.0
 margin_top = 144.0
-margin_right = 188.0
+margin_right = 366.0
 margin_bottom = 240.0
 theme = SubResource( 5 )
 custom_fonts/normal_font = ExtResource( 9 )
@@ -429,23 +527,23 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 0
 text = "    The combination table combines two elements into one."
 
-[node name="Table_Comb" type="TextureRect" parent="CanvasLayer/interface/page_3"]
+[node name="Table_Comb" type="TextureRect" parent="CanvasLayer/interface/page_4"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -48.0
+margin_left = 136.0
 margin_top = 28.0
-margin_right = 48.0
+margin_right = 232.0
 margin_bottom = 124.0
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 expand = true
 stretch_mode = 6
 
-[node name="RichTextLabel_Deri" type="RichTextLabel" parent="CanvasLayer/interface/page_3"]
+[node name="RichTextLabel_Deri" type="RichTextLabel" parent="CanvasLayer/interface/page_4"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -162.0
+margin_left = 16.0
 margin_top = 360.0
-margin_right = 188.0
+margin_right = 366.0
 margin_bottom = 488.0
 theme = SubResource( 5 )
 custom_fonts/normal_font = ExtResource( 9 )
@@ -453,19 +551,30 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 0
 text = "    The derivation table can transform an element into a derived form."
 
-[node name="Table_Deri" type="TextureRect" parent="CanvasLayer/interface/page_3"]
+[node name="Table_Deri" type="TextureRect" parent="CanvasLayer/interface/page_4"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -48.0
-margin_top = 256.0
-margin_right = 48.0
-margin_bottom = 352.0
-texture = ExtResource( 19 )
+margin_left = 136.0
+margin_top = 240.0
+margin_right = 232.0
+margin_bottom = 336.0
+texture = ExtResource( 20 )
 expand = true
 stretch_mode = 6
 
-[node name="page_2" type="TextureRect" parent="CanvasLayer/interface"]
+[node name="PageNumber" type="Label" parent="CanvasLayer/interface/page_4"]
+margin_left = 792.0
+margin_top = 480.0
+margin_right = 888.0
+margin_bottom = 510.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "45"
+align = 2
+
+[node name="page_3" type="TextureRect" parent="CanvasLayer/interface"]
 editor/display_folded = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -481,27 +590,61 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_2"]
-margin_left = 350.0
+[node name="missing" type="TextureRect" parent="CanvasLayer/interface/page_3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -260.0
+margin_right = 512.0
+margin_bottom = 260.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_3"]
+margin_left = 528.0
 margin_top = 28.0
-margin_right = 700.0
-margin_bottom = 500.0
-theme = ExtResource( 20 )
+margin_right = 878.0
+margin_bottom = 492.0
+theme = ExtResource( 21 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "
-[center]Chapter 1: 
+[center]Chapter 2: 
 
 Alchemical 
 Tables[/center]"
 text = "
-Chapter 1: 
+Chapter 2: 
 
 Alchemical 
 Tables"
 
+[node name="page_2" type="TextureRect" parent="CanvasLayer/interface"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 1004.0
+margin_bottom = 500.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
 [node name="page_1" type="TextureRect" parent="CanvasLayer/interface"]
 editor/display_folded = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -518,11 +661,11 @@ expand = true
 stretch_mode = 6
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/interface/page_1"]
-margin_left = 350.0
+margin_left = 528.0
 margin_top = 28.0
-margin_right = 700.0
-margin_bottom = 500.0
-theme = ExtResource( 20 )
+margin_right = 878.0
+margin_bottom = 492.0
+theme = ExtResource( 21 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "
@@ -548,7 +691,7 @@ margin_bottom = 500.0
 rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 expand = true
 stretch_mode = 6
 
@@ -564,7 +707,7 @@ margin_right = 396.0
 margin_bottom = 556.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 stretch_mode = 6
 
 [node name="icon_page_close" type="TextureRect" parent="CanvasLayer/interface"]
@@ -578,7 +721,7 @@ margin_right = 548.0
 margin_bottom = 556.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 stretch_mode = 6
 
 [node name="icon_page_right" type="TextureRect" parent="CanvasLayer/interface"]
@@ -592,5 +735,5 @@ margin_right = 700.0
 margin_bottom = 556.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 stretch_mode = 6

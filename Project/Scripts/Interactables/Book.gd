@@ -59,7 +59,12 @@ func next_page():
 	
 	if cur_page < last_page:
 		
-		# Hides current page.W
+		# Turns on the pages of the book, if coming from the first page.
+		if cur_page == 0:
+			for i in range(1, last_page + 1):
+				get_node("CanvasLayer/interface/page_" + str(i)).show()
+		
+		# Hides current page.
 		get_node("CanvasLayer/interface/page_" + str(cur_page)).hide()
 		
 		# Updates page number.
@@ -75,9 +80,14 @@ func prev_page():
 		
 		# Updates page number.
 		cur_page -= 1
-		# Shows next page.
 		
+		# Shows the page.
 		get_node("CanvasLayer/interface/page_" + str(cur_page)).show()
+		
+		# Hides other pages if this is the first page (cover).
+		if cur_page == 0:
+			for i in range(1, last_page + 1):
+				get_node("CanvasLayer/interface/page_" + str(i)).hide()
 		
 		# Update interaction icons.
 		update_icons()
